@@ -1,0 +1,48 @@
+API La Liga Tracker - Guía de Uso
+
+#ENDPOINTS PRINCIPALES:
+
+1. OBTENER TODOS LOS PARTIDOS:
+   GET /api/matches
+
+2. CREAR PARTIDO:
+   POST /api/matches
+   Body (JSON):
+   {
+     "homeTeam": "string",
+     "awayTeam": "string",
+     "matchDate": "string (YYYY-MM-DD)"
+   }
+
+3. BUSCAR PARTIDO POR ID:
+   GET /api/matches/{id}
+
+4. ACTUALIZAR PARTIDO:
+   PUT /api/matches/{id}
+   Body (misma estructura que POST)
+
+5. ELIMINAR PARTIDO:
+   DELETE /api/matches/{id}
+
+#EJEMPLOS CON CURL:
+
+# Crear partido
+curl -X POST http://localhost:8080/api/matches \
+  -H "Content-Type: application/json" \
+  -d '{"homeTeam":"Barcelona","awayTeam":"Real Madrid","matchDate":"2024-12-01"}'
+
+# Obtener partido con ID=1
+curl http://localhost:8080/api/matches/1
+
+# AUTENTICACIÓN: 
+No requerida (API abierta)
+
+# CÓDIGOS DE RESPUESTA:
+- 200: Éxito
+- 201: Recurso creado
+- 400: Datos inválidos
+- 404: No encontrado
+- 500: Error del servidor
+
+#FORMATO DE FECHA:
+YYYY-MM-DD (ej: 2024-05-20)
